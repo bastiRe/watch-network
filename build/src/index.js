@@ -52,7 +52,7 @@
       this._tasks = {};
       this._executingTasks = false;
       this._deferredTaskMatches = [];
-      this._waitingOnRootFileChange = true;
+      this._waitingOnRootFileChange = false;
       this._waitingOnRootFileChangeRetries = 0;
       this._waitingOnRootFileChangeMaxRetries = 3;
       this._waitingOnRootFileChangeIntervalId = null;

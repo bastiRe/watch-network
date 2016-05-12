@@ -36,7 +36,7 @@ class WatchNetwork extends EventEmitter
     @_tasks = {}
     @_executingTasks = false
     @_deferredTaskMatches = []
-    @_waitingOnRootFileChange = true
+    @_waitingOnRootFileChange = false
     @_waitingOnRootFileChangeRetries = 0
     @_waitingOnRootFileChangeMaxRetries = 3
     @_waitingOnRootFileChangeIntervalId = null
