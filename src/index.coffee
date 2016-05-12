@@ -101,29 +101,30 @@ class WatchNetwork extends EventEmitter
 
 
   _touchLocalRootFileAndWait: =>
-    if @_waitingOnRootFileChangeRetries > @_waitingOnRootFileChangeMaxRetries
-      err = "No change event after touching the RootFile, aborting..
-            (max retries reached: #{@_waitingOnRootFileChangeMaxRetries})"
-      @log.debug err
-      throw new Error err
-
-    @_touchLocalRootFile()
-
-    retries = ""
-    if @_waitingOnRootFileChangeRetries > 0
-      retries = " Retry #{@_waitingOnRootFileChangeRetries}/#{@_waitingOnRootFileChangeMaxRetries}: "
-
-    @log.debug "Waiting for incoming Listen Data..#{retries}"
-
-    @_waitingOnRootFileChangeRetries++
-
-    setTimeout =>
-      if not @_waitingOnRootFileChange
-        return
-
-      @_waitingOnRootFileChangeRetries++
-      @_touchLocalRootFile()
-    , 100
+    true
+    # if @_waitingOnRootFileChangeRetries > @_waitingOnRootFileChangeMaxRetries
+    #   err = "No change event after touching the RootFile, aborting..
+    #         (max retries reached: #{@_waitingOnRootFileChangeMaxRetries})"
+    #   @log.debug err
+    #   throw new Error err
+    #
+    # @_touchLocalRootFile()
+    #
+    # retries = ""
+    # if @_waitingOnRootFileChangeRetries > 0
+    #   retries = " Retry #{@_waitingOnRootFileChangeRetries}/#{@_waitingOnRootFileChangeMaxRetries}: "
+    #
+    # @log.debug "Waiting for incoming Listen Data..#{retries}"
+    #
+    # @_waitingOnRootFileChangeRetries++
+    #
+    # setTimeout =>
+    #   if not @_waitingOnRootFileChange
+    #     return
+    #
+    #   @_waitingOnRootFileChangeRetries++
+    #   @_touchLocalRootFile()
+    # , 100
 
 
   _touchLocalRootFile: ->
